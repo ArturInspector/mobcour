@@ -7,7 +7,7 @@ from pathlib import Path
 import threading
 
 logger = logging.getLogger(__name__)
-
+# Database init, there are many useless methods and rows, in future version it will be rework.
 class Database:
     _instance = None
     _lock = threading.Lock()
@@ -44,7 +44,7 @@ class Database:
                 logger.warning(f"Ошибка при миграции базы данных: {e}")
                 logger.info("Продолжаем работу с текущей структурой базы данных")
             
-            # Добавляем столбец user_id, если он отсутствует
+
             self.add_user_id_column()
             
             # Обновляем существующих пользователей
